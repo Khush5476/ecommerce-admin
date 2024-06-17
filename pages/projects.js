@@ -82,7 +82,7 @@ export default function Products() {
         <tbody>
           {projects.map(project => (
             <tr key={project._id}>
-              <td>{project.Title}</td>
+              <td>{project.Title}</td>                   
               <td>
                 <Link className="btn-default" href={'/projects/edit/'+project._id}>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">

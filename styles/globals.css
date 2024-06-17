@@ -28,7 +28,7 @@ table.basic{
   @apply w-full;
 }
 
-table.basic thread tr td{
+table.basic thead tr td{
   @apply bg-blue-100
 }
 

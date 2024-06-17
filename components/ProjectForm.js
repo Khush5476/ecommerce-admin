@@ -4,26 +4,37 @@ import axios from "axios";
 import { useRouter } from "next/router";
 
 
-export default function ProjectForm ({_id,Title:existingTitle,Description:existingDescription,Price:existingPrice}) {
+export default function ProjectForm ({
+    _id,
+    Title:existingTitle,
+    Description:existingDescription,
+    Price:existingPrice
+}) {
 
     const [Title, setTitle] = useState(existingTitle || '');
     const [Description, setDescription] = useState(existingDescription || '');
     const [Price, setPrice] = useState(existingPrice || '');
-    const [GoToProjects, setGoToProjects] = useState(false);
+    const [goToProjects, setGoToProjects] = useState(false);
     const router = useRouter();
     async function saveProject(ev) {
-        ev.preventDefault();
         const data = {Title,Description,Price};
-        if (_id) {
+        ev.preventDefault();
+        if(_id){
             await axios.put('/api/projects', {...data,_id});
-        }
-        else{
+        } else{
             await axios.post('/api/projects', data);
+
         }
+
         setGoToProjects(true);
 
+
+
+
+
     }
-    if(GoToProjects){
+
+    if(goToProjects){
         router.push('/projects');
     }
     return (

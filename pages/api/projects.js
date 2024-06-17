@@ -9,12 +9,11 @@ export default async function handle(req, res){
 
     if(method === 'GET'){
         // this was the issue
-        // if(req.query?.id){
-        //     res.json(await Project.findOne({_id:req.query.id}));
-        // } else {
-        //     res.json(await Project.findOne());
-        // }
-        res.json(await Project.find());
+        if(req.query?.id){
+            res.json(await Project.findOne({_id:req.query.id}));
+        } else {
+            res.json(await Project.find());
+        }
 
 
     }
@@ -28,7 +27,7 @@ export default async function handle(req, res){
     }
 
     if (method === 'PUT'){
-    const data = {Title,Description,Price,_id} = req.body;
+    const {Title,Description,Price,_id} = req.body;
     await Project.updateOne({_id}, {Title,Description,Price});
     res.json(true);
     }
